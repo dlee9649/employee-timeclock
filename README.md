@@ -40,15 +40,15 @@
 
 *After the adjusted timestamp for a punch has been determined, that timestamp is saved to the database, in the "adjustedtimestamp" field of the original record, and a note is added which indicates the rule which triggered the adjustment.*
 
-## Feature 4 - Commit hash: 8f1d2c7a3c5b062c30cfa0dd03619de37dfcce5f
-## Goal - Compute the total number of minutes accrued by an employee within a single day.
+### Feature 4 - Commit hash: 8f1d2c7a3c5b062c30cfa0dd03619de37dfcce5f
+### Goal - Compute the total number of minutes accrued by an employee within a single day.
 
 *In this feature, we implement a method of the database class which accepts a single Punch as an argument, and determines the total number of minutes accrued by the employee within the day in which that punch was entered.  This total is computed after ALL of the punches for the day have been retrieved from the database and have been adjusted according to the employee's shift rules.*
 
 *The method getMinutesAccrued(Punch p) in the database class finds from which shift the punch belongs, collects any other punches with the same badge ID and day (from timestamp), and stores them all into a new arrayList. It then adjusts all punches according to their shift rules and accumulates the total number of minutes for the day for that particular badge ID.*
 
-## Feature 5 - Commit hash: 9910324e4d6db64661683e1db185110064fc223f
-## Goal - Gather the list of punches accumulated by an employee over the course of a single day, and the total number of minutes accrued by an employee within that day, and parse this data into a JSON string.
+### Feature 5 - Commit hash: 9910324e4d6db64661683e1db185110064fc223f
+### Goal - Gather the list of punches accumulated by an employee over the course of a single day, and the total number of minutes accrued by an employee within that day, and parse this data into a JSON string.
 
 *In this feature we combine the collectPunch() method (that used 2 ArrayLists) into one private method that returns an ArrayList of punches within that day. We also add getPunchListAsJSON() method to the database class which accepts a single Punch as an argument.  This new method retrieves the list of punches accumulated by the employee within the day in which the punch was created, adjusts the punches according to the employee's shift rules, computes the total number of minutes accrued by the employee within that day, parses this data into a nested data structure, parses this structure into a JSON string, and returns the string to the caller.*
 
